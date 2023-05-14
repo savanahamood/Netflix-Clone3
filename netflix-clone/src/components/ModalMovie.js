@@ -6,22 +6,30 @@ import axios from 'axios';
 
 
 function ModalMovie(props) {
-    const { showFlag, handleClose, movie, onMovieAdded } = props;
+    const { showFlag, handleClose, movieData } = props;
     const [Opinion, setOpinion] = useState('');
     const handleSubmit = async () => {
-      try {
-        const serverUrl = `https://onlineserver-w9zu.onrender.com/getMovies`;
-        const data = {
-          title: movie.title,
-          poster_path: movie.poster_path,
-          Opinion: Opinion
-        };
-          await axios.post(serverUrl, data);
-        handleClose();
-        onMovieAdded();
-      } catch (error) {
-        console.log(error);
-      }
+        try {
+
+            const serverUrl = `https://onlineserver-w9zu.onrender.com/getMovies`;
+            const data = {
+                id: movieData.id,
+                title: movieData.title,
+                release_date: movieData.release_date,
+                poster_path: movieData.poster_path,
+                overview:movieData.overview
+
+            };
+            console.log("sssssss");
+            axios.post(serverUrl, data).then((res)=>{
+console.log(res);
+            });
+
+            handleClose();
+            
+        } catch (error) {
+            console.log(error);
+        }
     };
 
 
@@ -32,18 +40,18 @@ function ModalMovie(props) {
                     <Modal.Title>{props.movieData.title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Image src={`https://image.tmdb.org/t/p/original${props.movieData.poster_path}`} rounded width='100%'/>
-                <div>
-                <label htmlFor='op'> Write Your Opinion </label>
-                <br></br>
-                <input placeholder='write opinion' type="text" value={Opinion} size='50' onChange={(event) => setOpinion(event.target.value)}/>
-                </div>
+                    <Image src={`https://image.tmdb.org/t/p/original${props.movieData.poster_path}`} rounded width='100%' />
+                    <div>
+                        <label htmlFor='op'> Write Your Opinion </label>
+                        <br></br>
+                        <input placeholder='write opinion' type="text" value={Opinion} size='50' onChange={(event) => setOpinion(event.target.value)} />
+                    </div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={()=>{handleSubmit}}>
+                    <Button variant="primary" onClick={handleSubmit }>
                         Add it
                     </Button>
                 </Modal.Footer>

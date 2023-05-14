@@ -9,6 +9,7 @@ function Movie(props) {
     const [show, setShow] = useState(false);
     const [clickedMovie,setClickedMovie]=useState({});
     const handleShow = (item) => {
+        
         setShow(true);
         setClickedMovie(item);
     }
