@@ -18,6 +18,7 @@ function ModalMovie(props) {
                 release_date: movieData.release_date,
                 poster_path: movieData.poster_path,
                 overview:movieData.overview
+               // Opinion:Opinion
 
             };
             console.log("sssssss");

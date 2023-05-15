@@ -7,14 +7,14 @@ function Header() {
         <>
             <Navbar bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand href="#home">Movies App</Navbar.Brand>
-                    <Nav className="me-auto">
+{/*                     <Navbar.Brand >Movies App</Navbar.Brand>
+ */}                    <Nav className="me-auto">
                      {/*    <link to="/">Home</link>
                         <link to="/trending">Fav List</link> */}
 
-                      <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/trending">Fav List</Nav.Link> 
-
+                         <Nav.Link href="/trending">Home</Nav.Link> 
+                      <Nav.Link href="/getMovies">Fav List</Nav.Link>
+ 
                     </Nav>
                 </Container>
             </Navbar>

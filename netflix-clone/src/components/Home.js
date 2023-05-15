@@ -7,7 +7,7 @@ import Button from "react-bootstrap/Button";
 function Home() {
     const [moviesData, setMoviesData] = useState([]);
     const sendReq = async () => {
-        const serverUrl = `https://onlineserver-w9zu.onrender.com/trending`;
+        const serverUrl = `https://onlineserver-w9zu.onrender.com/getMovies`;
         const result = await axios.get(serverUrl);
         console.log(result.data);
         setMoviesData(result.data);
@@ -18,7 +18,7 @@ function Home() {
     },[]);
     return (
         <>
-            <h1>Home</h1>
+            <h1>Fav List</h1>
             <Row xs={1} md={4} className="g-4">
                 {moviesData.map((item, idx) => (
                     <Col key={idx}>
