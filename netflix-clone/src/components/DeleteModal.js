@@ -14,7 +14,7 @@ function DeleteModal(props){
         movieData.preventDefault();
     
 
-            const serverUrl = `https://onlineserver-w9zu.onrender.com/getMovies/${props.movieData.id}`;
+            const serverUrl = `${process.env.REACT_APP_SERVER_URL}/getMovies/${props.movieData.id}`;
             /* const data = {
                 id: movieData.target.id.value,
                 title: movieData.target.title.value,

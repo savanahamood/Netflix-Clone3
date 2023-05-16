@@ -12,7 +12,7 @@ function ModalMovie(props) {
     const handleSubmit = async () => {
         try {
 
-            const serverUrl = `https://onlineserver-w9zu.onrender.com/getMovies`;
+            const serverUrl = `${process.env.REACT_APP_SERVER_URL}/getMovies`;
             const data = {
                 id: movieData.id,
                 title: movieData.title,
