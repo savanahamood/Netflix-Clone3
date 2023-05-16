@@ -3,10 +3,11 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import React, { useState } from 'react';
 import axios from 'axios';
+import MovieList from './MovieList';
 
 
 function ModalMovie(props) {
-    const { showFlag, handleClose, movieData } = props;
+     const { showFlag, handleClose, movieData } = props;
     const [Opinion, setOpinion] = useState('');
     const handleSubmit = async () => {
         try {
@@ -26,14 +27,14 @@ function ModalMovie(props) {
 console.log(res);
             });
 
-            handleClose();
+            props.handleClose();
             
         } catch (error) {
             console.log(error);
         }
     };
 
-
+ 
     return (
         <>
             <Modal show={showFlag} onHide={handleClose}>
@@ -42,11 +43,11 @@ console.log(res);
                 </Modal.Header>
                 <Modal.Body>
                     <Image src={`https://image.tmdb.org/t/p/original${props.movieData.poster_path}`} rounded width='100%' />
-                    <div>
+                    {/* <div>
                         <label htmlFor='op'> Write Your Opinion </label>
                         <br></br>
                         <input placeholder='write opinion' type="text" value={Opinion} size='50' onChange={(event) => setOpinion(event.target.value)} />
-                    </div>
+                    </div> */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
@@ -57,8 +58,10 @@ console.log(res);
                     </Button>
                 </Modal.Footer>
             </Modal>
-        </>
+{/*             <MovieList handleClose={handleClose} handleSubmit={handleSubmit} />
+ */}        </>
     )
+
 }
 
 export default ModalMovie;
